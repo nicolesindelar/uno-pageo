@@ -68,5 +68,9 @@ input{
 
 .whatevs{
   margin-bottom: 40px;
+  clip-path:circle(200px at center);
+
+
+
 
 }
