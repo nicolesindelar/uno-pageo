@@ -14,9 +14,36 @@
           </div>
           <button class="buttonAdd">Add</button>
         </div>
+        <div class="resultSection"></div>     <!--skapad som en "hemlig" div där vi lagrar input från add knappen i mha javascript-->
         <button class="buttonLemonade">Let's make lemonade!</button>
+
         <br>
         <img class="whatevs" src="https://i.ytimg.com/vi/OrLAKULUpVg/maxresdefault.jpg" style="width:560px;height:400px;">
       </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function()  {                      //vi sätter in olika funktioner. Måsvingarna anger vad som är i funktionen (i detta fall övergripande funktionsmode)
+      $('.resultSection').hide()      //funktion 1. gömmer inputen som du lägger till mha av add knappen
+
+      var add_option = function()  {                      //stoppar in en variabel, döps till add_option, och denna variabel är en funktion, nya måsvingar
+        $('.inputs').append('<input></input>')          //i "inputs-blocket" vill vi att man lägger till nytt inputfält - appendfunkctionen (färdig jquery)
+      }
+
+     $('.buttonAdd').click(add_option)                //vi länkar vår funktionsvariabel till vår knapp. Vid klick, då läggs en ny input in.
+
+//Skapa en ny funktion - när du klickar på rubriken byts bakgrundsbild och när du klickar igen ändras tillbaka - toggle.
+//lösning: lägger till en ny class som har den bild som du vill ha.
+
+
+
+
+    })                                 //avslutar funktionsläget
+
+
+
+  </script>
+
   </body>
 </html>
