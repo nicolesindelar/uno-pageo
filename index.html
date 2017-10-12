@@ -10,40 +10,43 @@
         <h1>When life gives you lemons...</h1>
         <div class="inputSection">
           <div class="inputs">
-            <input placeholder=" What to do?"></input>
+            <input placeholder=" What should you do?"></input>
           </div>
           <button class="buttonAdd">Add</button>
         </div>
         <div class="resultSection"></div>     <!--skapad som en "hemlig" div där vi lagrar input från add knappen i mha javascript-->
-        <button class="buttonLemonade">Let's make lemonade!</button>
+        <button class="buttonLemonade">Let's try out that lemonade!</button>
 
         <br>
         <img class="whatevs" src="https://i.ytimg.com/vi/OrLAKULUpVg/maxresdefault.jpg" style="width:560px;height:400px;">
       </div>
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>            <!--startar skript läge (Javascript)-->
   <script>
-    $(function()  {                      //vi sätter in olika funktioner. Måsvingarna anger vad som är i funktionen (i detta fall övergripande funktionsmode)
+  $(function()  {
+
       $('.resultSection').hide()      //funktion 1. gömmer inputen som du lägger till mha av add knappen
 
       var add_option = function()  {                      //stoppar in en variabel, döps till add_option, och denna variabel är en funktion, nya måsvingar
-        $('.inputs').append('<input></input>')          //i "inputs-blocket" vill vi att man lägger till nytt inputfält - appendfunkctionen (färdig jquery)
+        $('.inputs').append('<input></input>')            //i "inputs-blocket" vill vi att man lägger till nytt inputfält - appendfunkctionen (färdig jquery)
       }
+        $('.buttonAdd').click(add_option)                //vi länkar vår funktionsvariabel till vår knapp. Vid klick, då läggs en ny input in.
 
-     $('.buttonAdd').click(add_option)                //vi länkar vår funktionsvariabel till vår knapp. Vid klick, då läggs en ny input in.
-
-//Skapa en ny funktion - när du klickar på rubriken byts bakgrundsbild och när du klickar igen ändras tillbaka - toggle.
-//lösning: lägger till en ny class som har den bild som du vill ha.
-
-
-
-
+      var options = []                                   //variabel som heter options och är en tom lista
+      var submit = function() {                          //variabel submit för vi till en function
+          $('.inputSection').hide()                         //gömmer inputSection
+          $('.resultSection').css('display','flex')        //visar resultSection genom att ändra i CSS-en från hide till display
+        $('input').each(function() {                     //i den funktionen ingår: vid varje "input" görs en ny funktion. jquerys each motsvarar en "for-loop".
+          options.push($(this).val())                  //listan options, pushar (lägger till) "this" (=aktuell input) och dess value
+        })
+        var winner = options[Math.floor(Math.random() * options.length)]
+        console.log(winner)
+        $('.resultSection').text(winner)
+                                                                         //skapar en variabel winner som tar ett random input från de antal inputs vi skapat i variabeln options, detta sker i samband med funktionen "submit" vi skapat
+      }                                                                   //Math.floor ser till att det som multipliceras i random är heltal. Math.random muliplceras med längden på vår lista.
+      $('.buttonLemonade').click(submit)                 //kopplar funktionen submit till knappen buttonLemonade
     })                                 //avslutar funktionsläget
-
-
-
   </script>
-
   </body>
 </html>
